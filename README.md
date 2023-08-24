@@ -1,21 +1,11 @@
 # URL-shortner
 A URL shortener is a web service that takes a long and complex URL and compresses it to a short and clear link that is easier to share. Users are redirected to the primary URL when they click these short links.
 
+## Pre-requisite
+
+git and docker must be installed (https://docs.docker.com/engine/install/)
+
 ## Installation
-
-### Redis cache - setup & run  
-docker must be installed & running
-```bash
-% docker run --name shortner-redis-cache -p 6389:6379 --restart always --detach redis
-```
-
-### Install golang
-
-#### Mac
-install golang on MacBook using brew 
-```bash
-% brew install go
-```
 
 ### Install From Source
 
@@ -25,15 +15,14 @@ install golang on MacBook using brew
 % git clone https://github.com/sohm22/short-url.git
 ```
 
-#### Step 2: Build binary 
+#### Step 2: Build Image 
 ```bash
-% cd api
-% go build
+% docker-compose build
 ```
 
-#### Step 2: Run Backend Server
+#### Step 2: Runing the services
 ```bash
-% ./short-url
+% docker-compose up
 ```
 
 ## Usage
