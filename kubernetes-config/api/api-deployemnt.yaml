@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shortner-api
+spec:
+  selector:
+    matchLabels:
+      run: shortner-api
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: shortner-api
+    spec:
+      containers:
+      - name: shortner-api
+        image: localhost:5001/shortner-api
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+        env:
+          - name: DB_ADDR
+            value: "redis:6379"
+          - name: APP_PORT
+            value: ":3000"
+          - name: DOMAIN
+            value: "localhost:3000"
+          - name: API_QUOTA
+            value: "10"
